@@ -26,11 +26,20 @@
       "type": "blocks"
     },
     "zdjecie": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "PoczatekSzlaku": {
+      "type": "customField",
+      "customField": "plugin::google-maps.location-picker"
+    },
+    "KoniecSzlaku": {
+      "type": "customField",
+      "customField": "plugin::google-maps.location-picker"
     }
   }
 }
