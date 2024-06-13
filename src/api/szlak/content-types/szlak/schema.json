@@ -40,6 +40,14 @@
     "KoniecSzlaku": {
       "type": "customField",
       "customField": "plugin::google-maps.location-picker"
+    },
+    "Trudnosc": {
+      "type": "enumeration",
+      "enum": [
+        "łatwy",
+        "średni",
+        "trudny"
+      ]
     }
   }
 }

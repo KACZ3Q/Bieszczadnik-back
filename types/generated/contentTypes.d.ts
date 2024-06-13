@@ -383,6 +383,7 @@ export interface ApiSzlakSzlak extends Schema.CollectionType {
       Attribute.CustomField<'plugin::google-maps.location-picker'>;
     KoniecSzlaku: Attribute.JSON &
       Attribute.CustomField<'plugin::google-maps.location-picker'>;
+    Trudnosc: Attribute.Enumeration<['\u0142atwy', '\u015Bredni', 'trudny']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
