@@ -375,7 +375,6 @@ export interface ApiSzlakSzlak extends Schema.CollectionType {
   };
   attributes: {
     tytul: Attribute.String;
-    opis: Attribute.Text;
     slug: Attribute.UID<'api::szlak.szlak', 'tytul'>;
     zawartosc: Attribute.Blocks;
     zdjecie: Attribute.Media<'images'>;
@@ -822,7 +821,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -851,6 +849,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    firstName: Attribute.String;
+    lastName: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
