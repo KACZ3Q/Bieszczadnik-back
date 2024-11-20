@@ -383,6 +383,11 @@ export interface ApiSzlakSzlak extends Schema.CollectionType {
     KoniecSzlaku: Attribute.JSON &
       Attribute.CustomField<'plugin::google-maps.location-picker'>;
     Trudnosc: Attribute.Enumeration<['\u0142atwy', '\u015Bredni', 'trudny']>;
+    ulubione: Attribute.Relation<
+      'api::szlak.szlak',
+      'oneToMany',
+      'api::ulubione.ulubione'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -394,6 +399,45 @@ export interface ApiSzlakSzlak extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::szlak.szlak',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUlubioneUlubione extends Schema.CollectionType {
+  collectionName: 'ulubiones';
+  info: {
+    singularName: 'ulubione';
+    pluralName: 'ulubiones';
+    displayName: 'Ulubione';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::ulubione.ulubione',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    szlak: Attribute.Relation<
+      'api::ulubione.ulubione',
+      'manyToOne',
+      'api::szlak.szlak'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ulubione.ulubione',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::ulubione.ulubione',
       'oneToOne',
       'admin::user'
     > &
@@ -851,6 +895,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     firstName: Attribute.String;
     lastName: Attribute.String;
+    ulubione: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::ulubione.ulubione'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -879,6 +928,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::szlak.szlak': ApiSzlakSzlak;
+      'api::ulubione.ulubione': ApiUlubioneUlubione;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

@@ -45,6 +45,12 @@
         "średni",
         "trudny"
       ]
+    },
+    "ulubione": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ulubione.ulubione",
+      "mappedBy": "szlak"
     }
   }
 }

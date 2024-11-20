@@ -70,6 +70,12 @@
     },
     "lastName": {
       "type": "string"
+    },
+    "ulubione": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ulubione.ulubione",
+      "mappedBy": "user"
     }
   }
 }
