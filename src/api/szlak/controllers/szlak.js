@@ -6,12 +6,23 @@
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::szlak.szlak',
-    ({strapi})=>({
-        async findOne(ctx){
-            const {id}=ctx.params;
-            const entity = await strapi.db.query('api::szlak.szlak').findOne({where:{slug: id}});
-            const sanitizedEntity = await this.sanitizeOutput(entity,ctx);
-            return this.transformResponse(sanitizedEntity);
-        }
+module.exports = createCoreController('api::szlak.szlak', ({ strapi }) => ({
+  async findOne(ctx) {
+    const { id } = ctx.params; 
+    const { query } = ctx; 
+
+ 
+    const entity = await strapi.entityService.findMany('api::szlak.szlak', {
+      filters: { slug: id },
+      ...query, 
+    });
+
+
+    if (!entity || entity.length === 0) {
+      return ctx.notFound('Nie znaleziono szlaku z podanym slugiem');
+    }
+
+    const sanitizedEntity = await this.sanitizeOutput(entity[0], ctx);
+    return this.transformResponse(sanitizedEntity);
+  },
 }));

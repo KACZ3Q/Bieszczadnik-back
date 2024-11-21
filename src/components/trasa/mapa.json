@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_trasa_mapas",
+  "info": {
+    "displayName": "Mapa",
+    "icon": "pinMap"
+  },
+  "options": {},
+  "attributes": {
+    "Szlak": {
+      "type": "customField",
+      "optionsDefaultLat": "49.11",
+      "optionsDefaultLng": "22.72",
+      "customField": "plugin::google-maps.location-picker"
+    }
+  }
+}

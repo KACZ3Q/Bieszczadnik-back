@@ -30,14 +30,6 @@
         "images"
       ]
     },
-    "PoczatekSzlaku": {
-      "type": "customField",
-      "customField": "plugin::google-maps.location-picker"
-    },
-    "KoniecSzlaku": {
-      "type": "customField",
-      "customField": "plugin::google-maps.location-picker"
-    },
     "Trudnosc": {
       "type": "enumeration",
       "enum": [
@@ -51,6 +43,12 @@
       "relation": "oneToMany",
       "target": "api::ulubione.ulubione",
       "mappedBy": "szlak"
+    },
+    "Mapa": {
+      "type": "component",
+      "repeatable": true,
+      "component": "trasa.mapa",
+      "required": true
     }
   }
 }

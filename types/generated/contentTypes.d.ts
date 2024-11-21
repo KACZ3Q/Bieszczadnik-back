@@ -378,16 +378,13 @@ export interface ApiSzlakSzlak extends Schema.CollectionType {
     slug: Attribute.UID<'api::szlak.szlak', 'tytul'>;
     zawartosc: Attribute.Blocks;
     zdjecie: Attribute.Media<'images'>;
-    PoczatekSzlaku: Attribute.JSON &
-      Attribute.CustomField<'plugin::google-maps.location-picker'>;
-    KoniecSzlaku: Attribute.JSON &
-      Attribute.CustomField<'plugin::google-maps.location-picker'>;
     Trudnosc: Attribute.Enumeration<['\u0142atwy', '\u015Bredni', 'trudny']>;
     ulubione: Attribute.Relation<
       'api::szlak.szlak',
       'oneToMany',
       'api::ulubione.ulubione'
     >;
+    Mapa: Attribute.Component<'trasa.mapa', true> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
