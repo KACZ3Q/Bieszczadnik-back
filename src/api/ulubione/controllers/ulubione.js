@@ -13,14 +13,20 @@ module.exports = createCoreController('api::ulubione.ulubione', ({ strapi }) => 
             return ctx.unauthorized('Musisz być zalogowany, aby zobaczyć swoje ulubione.');
         }
 
-        // Pobierz ulubione powiązane z zalogowanym użytkownikiem
+
+
+        // Pobierz ulubione powiązane z zalogowanym użytkownikiem z pełnym populate
         const userFavorites = await strapi.entityService.findMany('api::ulubione.ulubione', {
             filters: {
-                user: {
-                    id: user.id,  
-                },
+            user: {
+                id: user.id,  
             },
-            populate: ['szlak'], 
+            },
+            populate: {
+            szlak: {
+                populate: '*', 
+            },
+            },
         });
 
         return userFavorites;
@@ -55,7 +61,7 @@ module.exports = createCoreController('api::ulubione.ulubione', ({ strapi }) => 
         });
 
         if (existingFavorite.length > 0) {
-            return ctx.badRequest('Już masz to w ulubionych.');
+            return ctx.badRequest('Ten szlak jest już dodany do ulubionych.');
         }
 
         // Przygotowanie danych do zapisania
