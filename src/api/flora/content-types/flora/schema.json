@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "floras",
+  "info": {
+    "singularName": "flora",
+    "pluralName": "floras",
+    "displayName": "Flora"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tytul": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "tytul"
+    },
+    "zdjecie": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "zawartosc": {
+      "type": "blocks"
+    }
+  }
+}

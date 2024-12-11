@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "faunas",
+  "info": {
+    "singularName": "fauna",
+    "pluralName": "faunas",
+    "displayName": "Fauna"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tytul": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "tytul"
+    },
+    "zdjecie": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "zawartosc": {
+      "type": "blocks"
+    }
+  }
+}

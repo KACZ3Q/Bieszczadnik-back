@@ -362,86 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiSzlakSzlak extends Schema.CollectionType {
-  collectionName: 'szlaki';
-  info: {
-    singularName: 'szlak';
-    pluralName: 'szlaki';
-    displayName: 'Szlak';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    tytul: Attribute.String;
-    slug: Attribute.UID<'api::szlak.szlak', 'tytul'>;
-    zawartosc: Attribute.Blocks;
-    zdjecie: Attribute.Media<'images'>;
-    Trudnosc: Attribute.Enumeration<['\u0142atwy', '\u015Bredni', 'trudny']>;
-    ulubione: Attribute.Relation<
-      'api::szlak.szlak',
-      'oneToMany',
-      'api::ulubione.ulubione'
-    >;
-    Mapa: Attribute.Component<'trasa.mapa', true> & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::szlak.szlak',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::szlak.szlak',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiUlubioneUlubione extends Schema.CollectionType {
-  collectionName: 'ulubiones';
-  info: {
-    singularName: 'ulubione';
-    pluralName: 'ulubiones';
-    displayName: 'Ulubione';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    user: Attribute.Relation<
-      'api::ulubione.ulubione',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    szlak: Attribute.Relation<
-      'api::ulubione.ulubione',
-      'manyToOne',
-      'api::szlak.szlak'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::ulubione.ulubione',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::ulubione.ulubione',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -914,6 +834,187 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAktualnosciAktualnosci extends Schema.CollectionType {
+  collectionName: 'aktualnoscis';
+  info: {
+    singularName: 'aktualnosci';
+    pluralName: 'aktualnoscis';
+    displayName: 'Aktualnosci';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    tytul: Attribute.String;
+    slug: Attribute.UID<'api::aktualnosci.aktualnosci', 'tytul'>;
+    zawartosc: Attribute.Blocks;
+    zdjecie: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    data: Attribute.Date;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::aktualnosci.aktualnosci',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::aktualnosci.aktualnosci',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFaunaFauna extends Schema.CollectionType {
+  collectionName: 'faunas';
+  info: {
+    singularName: 'fauna';
+    pluralName: 'faunas';
+    displayName: 'Fauna';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    tytul: Attribute.String;
+    slug: Attribute.UID<'api::fauna.fauna', 'tytul'>;
+    zdjecie: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    zawartosc: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::fauna.fauna',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::fauna.fauna',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFloraFlora extends Schema.CollectionType {
+  collectionName: 'floras';
+  info: {
+    singularName: 'flora';
+    pluralName: 'floras';
+    displayName: 'Flora';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    tytul: Attribute.String;
+    slug: Attribute.UID<'api::flora.flora', 'tytul'>;
+    zdjecie: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    zawartosc: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::flora.flora',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::flora.flora',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSzlakSzlak extends Schema.CollectionType {
+  collectionName: 'szlaki';
+  info: {
+    singularName: 'szlak';
+    pluralName: 'szlaki';
+    displayName: 'Szlak';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    tytul: Attribute.String;
+    slug: Attribute.UID<'api::szlak.szlak', 'tytul'>;
+    zawartosc: Attribute.Blocks;
+    zdjecie: Attribute.Media<'images'>;
+    Trudnosc: Attribute.Enumeration<['\u0142atwy', '\u015Bredni', 'trudny']>;
+    ulubione: Attribute.Relation<
+      'api::szlak.szlak',
+      'oneToMany',
+      'api::ulubione.ulubione'
+    >;
+    Mapa: Attribute.Component<'trasa.mapa', true> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::szlak.szlak',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::szlak.szlak',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUlubioneUlubione extends Schema.CollectionType {
+  collectionName: 'ulubiones';
+  info: {
+    singularName: 'ulubione';
+    pluralName: 'ulubiones';
+    displayName: 'Ulubione';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::ulubione.ulubione',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    szlak: Attribute.Relation<
+      'api::ulubione.ulubione',
+      'manyToOne',
+      'api::szlak.szlak'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ulubione.ulubione',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::ulubione.ulubione',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -924,8 +1025,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::szlak.szlak': ApiSzlakSzlak;
-      'api::ulubione.ulubione': ApiUlubioneUlubione;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -935,6 +1034,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::aktualnosci.aktualnosci': ApiAktualnosciAktualnosci;
+      'api::fauna.fauna': ApiFaunaFauna;
+      'api::flora.flora': ApiFloraFlora;
+      'api::szlak.szlak': ApiSzlakSzlak;
+      'api::ulubione.ulubione': ApiUlubioneUlubione;
     }
   }
 }
