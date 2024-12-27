@@ -4,7 +4,8 @@
   "info": {
     "singularName": "fauna",
     "pluralName": "faunas",
-    "displayName": "Fauna"
+    "displayName": "Fauna",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,17 +20,24 @@
       "targetField": "tytul"
     },
     "zdjecie": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "zawartosc": {
       "type": "blocks"
+    },
+    "rodzaj": {
+      "type": "enumeration",
+      "enum": [
+        "Ssaki",
+        "Gady i płazy",
+        "Ptaki",
+        "Owady"
+      ]
     }
   }
 }

@@ -875,6 +875,7 @@ export interface ApiFaunaFauna extends Schema.CollectionType {
     singularName: 'fauna';
     pluralName: 'faunas';
     displayName: 'Fauna';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -882,8 +883,11 @@ export interface ApiFaunaFauna extends Schema.CollectionType {
   attributes: {
     tytul: Attribute.String;
     slug: Attribute.UID<'api::fauna.fauna', 'tytul'>;
-    zdjecie: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    zdjecie: Attribute.Media<'images'>;
     zawartosc: Attribute.Blocks;
+    rodzaj: Attribute.Enumeration<
+      ['Ssaki', 'Gady i p\u0142azy', 'Ptaki', 'Owady']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
